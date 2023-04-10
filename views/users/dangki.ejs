@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="row col-6 mt-4">
+                <h3 class="mb-3 d-flex justify-content-center">Register</h3>
+                <%= msg %>
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" name="username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" name="email" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Số điện thoại</label>
+                        <input type="text"
+                            onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+                            class="form-control" name="sdt">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" class="form-control" name="pass">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Nhập lại Password</label>
+                        <input type="password" class="form-control" name="repass">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Đăng kí</button>
+                </form>
+                <div class="mt-2 d-flex justify-content-end">
+                    <a class="btn btn-info" href="/">Đăng nhập</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../inc/bottom-fixed') %>

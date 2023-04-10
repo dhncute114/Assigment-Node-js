@@ -1,0 +1,37 @@
+<% if (typeof(tieu_De)=='undefinded' ) { var tieu_de='' ; } %>
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            <%= tieu_de %>
+        </title>
+        <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg bg-body-secondary">
+            <div class="container-fluid">
+                <a class="navbar-brand row" href="#">
+                    <img src="https://r2s.edu.vn/wp-content/uploads/2021/04/FPT_Polytechnic.png" width="150"
+                        height="50">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link active" aria-current="page" href="/sanpham">Quản lý sản phẩm</a>
+                        <a class="nav-link" href="/taikhoan">Quản lý tài khoản</a>
+                    </div>
+                </div>
+                <a class=" btn btn-outline-danger justify-content-end" href="/">Đăng xuất</a>
+            </div>
+        </nav>

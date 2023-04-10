@@ -1,0 +1,47 @@
+<%- include('../inc/nav') %>
+    <div class="container">
+        <h2 class="d-flex justify-content-center p-2">Sửa sản phẩm</h2>
+        <form method="POST">
+            <div class="form-group">
+                <label for="product-name">Tên sản phẩm:</label>
+                <input type="text" class="form-control m-2" name="tensp" placeholder="Nhập tên sản phẩm" value="<%= objsp.tensp %>">
+            </div>
+            
+            <div class="form-group">
+                <label for="">Thể Loại:</label>
+                <select class="form-control m-2" name="theloai" data-bs-toggle="dropdown" aria-expanded="false">
+                    <% listtl.forEach((row)=> {
+                        let selected = '';
+                        if (String(row.id) == String(objsp.id_theloai)) {
+                            selected = 'selected'
+                        }    
+                    %>
+                        <option <%= selected %> value="<%= row._id %>"><%= row.theloai %></option>
+                    <% }); %>  
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="product-image">Ảnh sản phẩm:</label>
+                <input type="file" class="form-control-file m-2" name="image" value="<%= objsp.image %>">
+            </div>
+            <div class="form-group">
+                <label for="product-description">Mô tả sản phẩm:</label>
+                <input class="form-control m-2" name="mota"
+                    placeholder="Nhập mô tả sản phẩm" value="<%= objsp.mota %>"></input>
+            </div>
+            <div class="form-group">
+                <label for="product-price">Giá tiền:</label>
+                <div class="input-group m-2">
+                    <input type="text" class="form-control" name="gia" placeholder="Nhập giá tiền" value="<%= objsp.gia %>">
+                    <div class="input-group-append">
+                        <span class="input-group-text">VNĐ</span>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-danger m-2">Sửa sản phẩm</button>
+        </form>
+    </div>
+
+
+    <%- include('../inc/bottom-fixed') %>

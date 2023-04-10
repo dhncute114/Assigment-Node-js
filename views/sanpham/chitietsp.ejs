@@ -1,0 +1,17 @@
+<%- include('../inc/nav', {tieu_de: 'Assigment-PH20149' }) %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="<%= sp.image %>" width="100%">
+        </div>
+        <div class="col-md-8">
+            <h2><%= sp.tensp %></h2>
+            <p>Thể loại: <%= sp.id_theloai.theloai %></p>
+            <p>Mô tả: <%= sp.mota %></p>
+            <p>Giá tiền: <%= sp.gia %> VND</p>
+        </div>
+    </div>
+</div>
+
+<%- include('../inc/bottom-fixed') %>

@@ -1,0 +1,27 @@
+<%- include('../inc/nav') %>
+    
+<div class="container">
+    <h2 class="d-flex justify-content-center p-2">SỬA TÀI KHOẢN</h2>
+    <form method="POST">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control m-2" name="username" placeholder="Enter username"
+                value="<%= objtk.username %>">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control m-2" name="pass" placeholder="Password" value="<%= objtk.pass %>">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control m-2" name="email" placeholder="Enter email" value="<%= objtk.email %>">
+        </div>
+        <div class="form-group">
+            <label for="phone">Số điện thoại</label>
+            <input type="tel" class="form-control m-2" name="sdt" placeholder="Enter phone number" value="<%= objtk.sdt %>">
+        </div>
+        <button type="submit" class="btn btn-primary m-2">Sửa</button>
+    </form>
+</div>
+
+    <%- include('../inc/bottom-fixed') %>

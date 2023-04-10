@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="row col-6 mt-4">
+                <h3 class="mb-3 d-flex justify-content-center">Login</h3>
+
+                <label class="form-label text-danger"><%= msg %></label>
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" name="username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" class="form-control" name="pass">
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="rememberMe">
+                        <label class="form-check-label" for="rememberMe">Nhớ tài khoản</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                </form>
+                <div class="mt-2 d-flex justify-content-end">
+                    <a class="btn btn-info" href="/dangki">Đăng kí</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const rememberMeCheckbox = document.getElementById('rememberMe');
+        const usernameInput = document.getElementsByName('username')[0];
+        const passwordInput = document.getElementsByName('pass')[0];
+
+        // Load saved login credentials if available
+        window.onload = function () {
+            if (localStorage.getItem('username') && localStorage.getItem('password')) {
+                usernameInput.value = localStorage.getItem('username');
+                passwordInput.value = localStorage.getItem('password');
+                rememberMeCheckbox.checked = true;
+            }
+        }
+
+        // Save login credentials to local storage if "Remember Me" is checked
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function (event) {
+            if (rememberMeCheckbox.checked) {
+                localStorage.setItem('username', usernameInput.value);
+                localStorage.setItem('password', passwordInput.value);
+            } else {
+                localStorage.removeItem('username');
+                localStorage.removeItem('password');
+            }
+        });
+    </script>
+
+<%- include('../inc/bottom-fixed') %>
