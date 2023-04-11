@@ -104,5 +104,3 @@ exports.xoasp = async (req, res, next) => {
     }
     res.redirect('/sanpham')
 }
-
-

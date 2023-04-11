@@ -3,8 +3,8 @@ var md = require('../models/user.model')
 exports.dstaikhoan = async (req, res, next) => {
 
     let filter = {};
-    if (typeof(req.query.uername) !== 'undefined') {
-        filter.username = req.query.tensp;
+    if (typeof (req.query.username) !== 'undefined') {
+        filter.username = new RegExp(req.query.username, "i");
     }
     var list = await md.usermd.find(filter).sort({username: 1});
     res.render('users/danhsachtk', { listtk: list });

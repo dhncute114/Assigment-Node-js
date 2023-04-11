@@ -28,9 +28,9 @@
                                 </ul>
                             </li>
                         </ul>
-                        <form class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Tìm kiếm theo tên khoản"
-                                aria-label="Search">
+                        <form class="d-flex" method="GET" action="" id="search-form">
+                            <input class="form-control me-2" type="search" placeholder="Tìm kiếm theo username"
+                                aria-label="Search" name="username">
                             <button class="btn btn-warning" type="submit">Tìm kiếm</button>
                         </form>
                     </div>
@@ -50,18 +50,45 @@
                 <tbody>
                     <% listtk.forEach((row)=> { %>
                         <tr>
-                            <td><%= row.username %></td>
-                            <td><%= row.email %></td>
-                            <td><%= row.sdt %></td>
+                            <td>
+                                <%= row.username %>
+                            </td>
+                            <td>
+                                <%= row.email %>
+                            </td>
+                            <td>
+                                <%= row.sdt %>
+                            </td>
                             <td></td>
                             <td>
                                 <a class="btn btn-primary" href="taikhoan/suatk/<%= row.id %>">Sửa</a>
-                                <a class="btn btn-danger" href="taikhoan/xoatk/<%= row.id %>">Xoá</a>
+                                <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-modal">Xoá</a>
+
+                                <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog"
+                                    aria-labelledby="delete-modal-label" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="delete-modal-label">Xác nhận xoá tài khoản</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Bạn có chắc chắn muốn xoá tài khoản này không?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a type="button" class="btn btn-danger" id="delete-confirm"
+                                                    href="taikhoan/xoatk/<%= row.id %>">Xoá</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                         <% }) %>
                 </tbody>
             </table>
         </div>
+
 
         <%- include('../inc/bottom-fixed') %>

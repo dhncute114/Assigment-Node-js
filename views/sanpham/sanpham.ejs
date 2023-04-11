@@ -16,9 +16,6 @@
                             <a class="nav-link btn btn-outline-info" href="/sanpham/addsp">Thêm sản
                                 phẩm</a>
                         </li>
-                        <li class="nav-item m-1">
-                            <a class="nav-link btn btn-outline-success" href="#">In danh sách</a>
-                        </li>
                         <li class="nav-item dropdown m-1">
                             <a class="nav-link dropdown-toggle btn btn-outline-danger" href="#" id="navbarDropdown"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -54,29 +51,6 @@
             </div>
         </nav>
 
-        <div class="modal fade" id="add-product-modal" tabindex="-1" role="dialog"
-            aria-labelledby="add-product-modal-title" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="add-product-modal-title">Thêm sản phẩm
-                        </h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="product-name">Tên thể loại</label>
-                                <input type="text" class="form-control" id="product-name">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Thêm thể loại</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <table class="table table-hover table-bordered">
             <thead>
@@ -111,8 +85,27 @@
                                 tiết</a>
                             <a class="btn btn-outline-primary btn-sm" href="sanpham/suasp/<%= row.id %>">Sửa</a>
 
-                            <a class="btn btn-outline-danger btn-sm" href="sanpham/xoasp/<%= row.id %>">Xoá</a>
-
+                            <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#delete-modal">Xoá</a>
+                            <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog"
+                                aria-labelledby="delete-modal-label" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="delete-modal-label">Xác nhận xoá sản phẩm</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Bạn có chắc chắn muốn xoá sản phẩm này không?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a type="button" class="btn btn-danger" id="delete-confirm"
+                                                href="sanpham/xoasp/<%= row.id %>">Xoá</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                     <% }); %>
