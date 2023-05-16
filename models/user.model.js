@@ -1,18 +1,27 @@
+const { Schema, model } = require("mongoose");
 var db = require('./db');
 
-var userschaema = new db.mongoose.Schema(
+var nhanvienschema = new db.mongoose.Schema(
     {
         username: {type: String, required: true},
         pass: {type: String, required: true},
         email: {type: String, required: true},
         sdt: {type: String, required: true},
-        role: {type: String, required: false}
+        diachi: {type: String, required: false}
     },
     {
         collection: 'tai_khoan'
     }
 )
 
-let usermd = db.mongoose.model('usermd', userschaema);
+var quanlyschema = new db.mongoose.Schema(
+    {
+        username: {type: String, required: true},
+        pass: {type: String, required: true}
+    }
+)
 
-module.exports = {usermd}
+let nhanvienmd = db.mongoose.model('nhanvienmd', nhanvienschema);
+let quanlymd = db.mongoose.model('quanlymd', quanlyschema);
+
+module.exports = {nhanvienmd, quanlymd}

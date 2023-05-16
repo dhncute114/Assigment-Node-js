@@ -45,22 +45,34 @@ exports.formaddsp = async (req, res, next) => {
     let msg = '';
 
     var listtl = await mydb.tlModel.find();
+    var fs = require('fs');
 
     if (req.method == 'POST') {
-        let objSP = new mydb.spModel();
+        if (req.body.tensp == "") {
+            msg = 'Vui lòng nhập tên sản phẩm'
+        } else if (req.body.mota == "") {
+            msg = 'Vui lòng nhập mô tả sản phẩm'
+        } else if (req.body.gia == "") {
+            msg = 'Vui lòng nhập giá sản phẩm'
+        } else if (req.body.image == "") {
+            msg = 'Vui lòng thêm ảnh sản phẩm'
+        } else {
+            let objSP = new mydb.spModel();
+            let url_file = '/uploads/' + req.file.originalname;
 
-        objSP.tensp = req.body.tensp;
-        objSP.id_theloai = req.body.theloai;
-        objSP.image = req.body.image;
-        objSP.mota = req.body.mota;
-        objSP.gia = req.body.gia;
+            objSP.tensp = req.body.tensp;
+            objSP.id_theloai = req.body.theloai;
+            objSP.image = url_file;
+            objSP.mota = req.body.mota;
+            objSP.gia = req.body.gia;
 
-        try {
-            let new_sp = await objSP.save();
-            msg = 'them thanh cong';
-        } catch (error) {
-            msg = 'loi' + error.message;
-            console.log(error);
+            try {
+                fs.renameSync(req.file.path, "./public/uploads/" + req.file.originalname);
+                let new_sp = await objSP.save();
+                res.redirect('/sanpham')
+            } catch (error) {
+                console.log(error);
+            }
         }
     }
 

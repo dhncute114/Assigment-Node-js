@@ -1,15 +1,15 @@
 <%- include('../inc/nav', {tieu_de: 'Assigment-PH20149' }) %>
 
 <div class="container">
+    <h1 class="d-flex justify-content-center text-danger-emphasis p-1"><%= sp.tensp %></h2>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 mb-1">
             <img src="<%= sp.image %>" width="100%">
         </div>
         <div class="col-md-8">
-            <h2><%= sp.tensp %></h2>
-            <p>Thể loại: <%= sp.id_theloai.theloai %></p>
-            <p>Mô tả: <%= sp.mota %></p>
-            <p>Giá tiền: <%= sp.gia %> VND</p>
+            <p class="rounded-2 border border-secondary bg-white p-2 ">Thể loại: <%= sp.id_theloai.theloai %></p>
+            <p class="rounded-2 border border-secondary bg-white ps-2 pe-5 pt-5 pb-5">Mô tả: <%= sp.mota %></p>
+            <p class="rounded-2 border border-secondary bg-white p-2">Giá tiền: <%= sp.gia %> VND</p>
         </div>
     </div>
 </div>
