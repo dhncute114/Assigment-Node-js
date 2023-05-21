@@ -22,8 +22,35 @@ exports.login = async (req, res, next) => {
             msg = error.message;
         }
     }
+    
 
     res.render('users/dangnhap', { msg: msg })
+}
+exports.loginU = async (req, res, next) => {
+    let msg = '';
+
+    if (req.method == 'POST') {
+        try {
+            let obju = await md.usermd.findOne({ username: req.body.username });
+            console.log(obju);
+
+            if (obju != null) {
+                if (obju.pass == req.body.pass) {
+                    req.session.userlogin = obju;
+                    return res.redirect('/sanpham');
+                } else {
+                    msg = 'Mật khẩu sai';
+                }
+            } else {
+                msg = 'Username ' + req.body.username + ' không tồn tại';
+            }
+        } catch (error) {
+            msg = error.message;
+        }
+    }
+    
+
+    res.render('users/dangnhapUser', { msg: msg })
 }
 
 exports.reg = async (req, res, next) => {
