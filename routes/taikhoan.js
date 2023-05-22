@@ -8,6 +8,9 @@ var uploader = multer({dest: './tmp'});
 router.get('/', taikhoancontroller.login);
 router.post('/', taikhoancontroller.login);
 
+router.get('/loginU', taikhoancontroller.loginU);
+router.post('/loginU', taikhoancontroller.loginU);
+
 router.get('/dangki', taikhoancontroller.reg);
 router.post('/dangki', taikhoancontroller.reg);
 
